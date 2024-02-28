@@ -1,7 +1,7 @@
 ﻿#include <cstdlib>
 
-#include <glut.h>
-#include <glfw3.h>
+#include <glut/src/glut.h>
+#include <GLFW/src/glfw3.h>
 
 void DrawCube(void);
 

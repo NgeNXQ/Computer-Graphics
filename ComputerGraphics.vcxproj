@@ -110,13 +110,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\KPI\Computer Graphics\Labworks\dependencies\glad\src;E:\KPI\Computer Graphics\Labworks\dependencies\GLFW\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\KPI\Computer Graphics\Labworks\dependencies;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glfw3.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:\KPI\Computer Graphics\Labworks\dependencies\GLFW\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:\KPI\Computer Graphics\Labworks\dependencies\glut\lib;E:\KPI\Computer Graphics\Labworks\dependencies\GLFW\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -127,7 +127,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\KPI\Computer Graphics\Labworks\dependencies\glad\src;E:\KPI\Computer Graphics\Labworks\dependencies\GLFW\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\KPI\Computer Graphics\Labworks\dependencies;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -135,7 +135,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glfw3.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:\KPI\Computer Graphics\Labworks\dependencies\GLFW\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:\KPI\Computer Graphics\Labworks\dependencies\glut\lib;E:\KPI\Computer Graphics\Labworks\dependencies\GLFW\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -145,10 +145,16 @@
     <Library Include="dependencies\GLFW\lib\glfw3.lib" />
     <Library Include="dependencies\GLFW\lib\glfw3dll.lib" />
     <Library Include="dependencies\GLFW\lib\glfw3_mt.lib" />
+    <Library Include="dependencies\glut\lib\freeglutd.lib" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dependencies\GLFW\src\glfw3.h" />
     <ClInclude Include="dependencies\GLFW\src\glfw3native.h" />
+    <ClInclude Include="dependencies\glut\src\freeglut.h" />
+    <ClInclude Include="dependencies\glut\src\freeglut_ext.h" />
+    <ClInclude Include="dependencies\glut\src\freeglut_std.h" />
+    <ClInclude Include="dependencies\glut\src\freeglut_ucall.h" />
+    <ClInclude Include="dependencies\glut\src\glut.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
