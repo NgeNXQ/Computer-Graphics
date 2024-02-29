@@ -3,7 +3,54 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ComputerGraphics", "ComputerGraphics.vcxproj", "{40410322-08DE-4675-920F-16058C1744D6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2", "2", "{D06922F9-3B8D-44B7-9A8A-E279690812F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dependencies", "dependencies", "{5A7FAFE7-33D7-446D-8D81-85669119F5CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "glfw", "glfw", "{FE23300E-1106-4E17-9E3D-468DCA98C6BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "glut", "glut", "{40E23D60-8883-45A4-9DBA-AF9B9562C074}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BB262CB2-7BC3-46FF-93E9-E6E2A694E372}"
+	ProjectSection(SolutionItems) = preProject
+		dependencies\glfw\src\glfw3.h = dependencies\glfw\src\glfw3.h
+		dependencies\glfw\src\glfw3native.h = dependencies\glfw\src\glfw3native.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{2274D789-F9AC-4D15-8688-155C65ED95B5}"
+	ProjectSection(SolutionItems) = preProject
+		dependencies\glfw\lib\glfw3.lib = dependencies\glfw\lib\glfw3.lib
+		dependencies\glfw\lib\glfw3dll.lib = dependencies\glfw\lib\glfw3dll.lib
+		dependencies\glfw\lib\glfw3_mt.lib = dependencies\glfw\lib\glfw3_mt.lib
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5FCEBAF8-994B-4B88-A965-63FD321D53D2}"
+	ProjectSection(SolutionItems) = preProject
+		dependencies\glut\src\freeglut.h = dependencies\glut\src\freeglut.h
+		dependencies\glut\src\freeglut_ext.h = dependencies\glut\src\freeglut_ext.h
+		dependencies\glut\src\freeglut_std.h = dependencies\glut\src\freeglut_std.h
+		dependencies\glut\src\freeglut_ucall.h = dependencies\glut\src\freeglut_ucall.h
+		dependencies\glut\src\glut.h = dependencies\glut\src\glut.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{201D0C87-2C8B-4A3A-B0DF-BD3F98F8CFDB}"
+	ProjectSection(SolutionItems) = preProject
+		dependencies\glut\lib\freeglutd.lib = dependencies\glut\lib\freeglutd.lib
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.1", "2.1", "{382031CA-1A0C-41E0-9ADE-DE10DA98C691}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.2", "2.2", "{5B1A6621-B3B3-45A1-B2B9-8E1EF2CC2649}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.3", "2.3", "{546D116B-A44C-4FAF-A77B-18A06CE61235}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Labwork2.1", "2\2.1\Labwork2.1.vcxproj", "{1E3E0E9B-F6EB-43E3-9AE2-4B7D8B2ECD9A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Labwork2.2", "2\2.2\Labwork2.2.vcxproj", "{E5AD61C8-303E-4BD5-A80D-93AE00E51CC2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Labwork2.3", "2\2.3\Labwork2.3.vcxproj", "{474EBDB6-590D-4180-9915-EC70FB3C305B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.4", "2.4", "{7120D76D-997F-47AF-8C08-981A1F955E88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,17 +60,48 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{40410322-08DE-4675-920F-16058C1744D6}.Debug|x64.ActiveCfg = Debug|x64
-		{40410322-08DE-4675-920F-16058C1744D6}.Debug|x64.Build.0 = Debug|x64
-		{40410322-08DE-4675-920F-16058C1744D6}.Debug|x86.ActiveCfg = Debug|Win32
-		{40410322-08DE-4675-920F-16058C1744D6}.Debug|x86.Build.0 = Debug|Win32
-		{40410322-08DE-4675-920F-16058C1744D6}.Release|x64.ActiveCfg = Release|x64
-		{40410322-08DE-4675-920F-16058C1744D6}.Release|x64.Build.0 = Release|x64
-		{40410322-08DE-4675-920F-16058C1744D6}.Release|x86.ActiveCfg = Release|Win32
-		{40410322-08DE-4675-920F-16058C1744D6}.Release|x86.Build.0 = Release|Win32
+		{1E3E0E9B-F6EB-43E3-9AE2-4B7D8B2ECD9A}.Debug|x64.ActiveCfg = Debug|x64
+		{1E3E0E9B-F6EB-43E3-9AE2-4B7D8B2ECD9A}.Debug|x64.Build.0 = Debug|x64
+		{1E3E0E9B-F6EB-43E3-9AE2-4B7D8B2ECD9A}.Debug|x86.ActiveCfg = Debug|Win32
+		{1E3E0E9B-F6EB-43E3-9AE2-4B7D8B2ECD9A}.Debug|x86.Build.0 = Debug|Win32
+		{1E3E0E9B-F6EB-43E3-9AE2-4B7D8B2ECD9A}.Release|x64.ActiveCfg = Release|x64
+		{1E3E0E9B-F6EB-43E3-9AE2-4B7D8B2ECD9A}.Release|x64.Build.0 = Release|x64
+		{1E3E0E9B-F6EB-43E3-9AE2-4B7D8B2ECD9A}.Release|x86.ActiveCfg = Release|Win32
+		{1E3E0E9B-F6EB-43E3-9AE2-4B7D8B2ECD9A}.Release|x86.Build.0 = Release|Win32
+		{E5AD61C8-303E-4BD5-A80D-93AE00E51CC2}.Debug|x64.ActiveCfg = Debug|x64
+		{E5AD61C8-303E-4BD5-A80D-93AE00E51CC2}.Debug|x64.Build.0 = Debug|x64
+		{E5AD61C8-303E-4BD5-A80D-93AE00E51CC2}.Debug|x86.ActiveCfg = Debug|Win32
+		{E5AD61C8-303E-4BD5-A80D-93AE00E51CC2}.Debug|x86.Build.0 = Debug|Win32
+		{E5AD61C8-303E-4BD5-A80D-93AE00E51CC2}.Release|x64.ActiveCfg = Release|x64
+		{E5AD61C8-303E-4BD5-A80D-93AE00E51CC2}.Release|x64.Build.0 = Release|x64
+		{E5AD61C8-303E-4BD5-A80D-93AE00E51CC2}.Release|x86.ActiveCfg = Release|Win32
+		{E5AD61C8-303E-4BD5-A80D-93AE00E51CC2}.Release|x86.Build.0 = Release|Win32
+		{474EBDB6-590D-4180-9915-EC70FB3C305B}.Debug|x64.ActiveCfg = Debug|x64
+		{474EBDB6-590D-4180-9915-EC70FB3C305B}.Debug|x64.Build.0 = Debug|x64
+		{474EBDB6-590D-4180-9915-EC70FB3C305B}.Debug|x86.ActiveCfg = Debug|Win32
+		{474EBDB6-590D-4180-9915-EC70FB3C305B}.Debug|x86.Build.0 = Debug|Win32
+		{474EBDB6-590D-4180-9915-EC70FB3C305B}.Release|x64.ActiveCfg = Release|x64
+		{474EBDB6-590D-4180-9915-EC70FB3C305B}.Release|x64.Build.0 = Release|x64
+		{474EBDB6-590D-4180-9915-EC70FB3C305B}.Release|x86.ActiveCfg = Release|Win32
+		{474EBDB6-590D-4180-9915-EC70FB3C305B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FE23300E-1106-4E17-9E3D-468DCA98C6BC} = {5A7FAFE7-33D7-446D-8D81-85669119F5CF}
+		{40E23D60-8883-45A4-9DBA-AF9B9562C074} = {5A7FAFE7-33D7-446D-8D81-85669119F5CF}
+		{BB262CB2-7BC3-46FF-93E9-E6E2A694E372} = {FE23300E-1106-4E17-9E3D-468DCA98C6BC}
+		{2274D789-F9AC-4D15-8688-155C65ED95B5} = {FE23300E-1106-4E17-9E3D-468DCA98C6BC}
+		{5FCEBAF8-994B-4B88-A965-63FD321D53D2} = {40E23D60-8883-45A4-9DBA-AF9B9562C074}
+		{201D0C87-2C8B-4A3A-B0DF-BD3F98F8CFDB} = {40E23D60-8883-45A4-9DBA-AF9B9562C074}
+		{382031CA-1A0C-41E0-9ADE-DE10DA98C691} = {D06922F9-3B8D-44B7-9A8A-E279690812F0}
+		{5B1A6621-B3B3-45A1-B2B9-8E1EF2CC2649} = {D06922F9-3B8D-44B7-9A8A-E279690812F0}
+		{546D116B-A44C-4FAF-A77B-18A06CE61235} = {D06922F9-3B8D-44B7-9A8A-E279690812F0}
+		{1E3E0E9B-F6EB-43E3-9AE2-4B7D8B2ECD9A} = {382031CA-1A0C-41E0-9ADE-DE10DA98C691}
+		{E5AD61C8-303E-4BD5-A80D-93AE00E51CC2} = {5B1A6621-B3B3-45A1-B2B9-8E1EF2CC2649}
+		{474EBDB6-590D-4180-9915-EC70FB3C305B} = {546D116B-A44C-4FAF-A77B-18A06CE61235}
+		{7120D76D-997F-47AF-8C08-981A1F955E88} = {D06922F9-3B8D-44B7-9A8A-E279690812F0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB970E91-6EE9-4BDF-8508-84FF4A4131E6}
