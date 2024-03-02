@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Local Dependencies">
+      <UniqueIdentifier>{aab19bc3-17e4-41a0-8323-69d7de755d7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Local Dependencies\glfw">
+      <UniqueIdentifier>{ea43048b-56bd-4ed8-a566-4f741abfd6e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Local Dependencies\glut">
+      <UniqueIdentifier>{22375d97-6e1d-4a78-a239-a5d4537cf98f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Local Dependencies\glfw\src">
+      <UniqueIdentifier>{72eb80ec-a61a-4bd2-933e-154db9b5e89a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Local Dependencies\glfw\lib">
+      <UniqueIdentifier>{3ed60dc8-5668-4b39-852d-8a714df40818}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Local Dependencies\glut\src">
+      <UniqueIdentifier>{75de10e7-fb3b-43ef-b9db-63ab778e8b43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Local Dependencies\glut\lib">
+      <UniqueIdentifier>{e9a0d7e7-d63a-4be7-a339-983fd912b2e8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="dependencies\GLFW\src\glfw3.h">
+      <Filter>Local Dependencies\glfw\src</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\GLFW\src\glfw3native.h">
+      <Filter>Local Dependencies\glfw\src</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\glut\src\glut.h">
+      <Filter>Local Dependencies\glut\src</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\glut\src\freeglut_ucall.h">
+      <Filter>Local Dependencies\glut\src</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\glut\src\freeglut_std.h">
+      <Filter>Local Dependencies\glut\src</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\glut\src\freeglut_ext.h">
+      <Filter>Local Dependencies\glut\src</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\glut\src\freeglut.h">
+      <Filter>Local Dependencies\glut\src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="dependencies\glut\lib\freeglutd.lib">
+      <Filter>Local Dependencies\glut\lib</Filter>
+    </Library>
+    <Library Include="dependencies\GLFW\lib\glfw3.lib">
+      <Filter>Local Dependencies\glfw\lib</Filter>
+    </Library>
+    <Library Include="dependencies\GLFW\lib\glfw3_mt.lib">
+      <Filter>Local Dependencies\glfw\lib</Filter>
+    </Library>
+    <Library Include="dependencies\GLFW\lib\glfw3dll.lib">
+      <Filter>Local Dependencies\glfw\lib</Filter>
+    </Library>
+  </ItemGroup>
+</Project>
