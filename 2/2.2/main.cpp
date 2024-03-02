@@ -62,6 +62,8 @@ int main(void)
     glEnable(GL_DOUBLEBUFFER);
     glEnable(GL_COLOR_MATERIAL);
 
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
     glEnable(GL_LIGHT0);
 
     while (!glfwWindowShouldClose(window))
