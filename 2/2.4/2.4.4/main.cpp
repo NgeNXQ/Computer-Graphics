@@ -57,7 +57,7 @@ int main(void)
         return EXIT_FAILURE;
     }
 
-    GLFWwindow* const window = glfwCreateWindow(VIEWPORT_INITIAL_WIDTH, VIEWPORT_INITIAL_HEIGHT, "Labwork #2 (2.1). IP-14 Babich Denys", NULL, NULL);
+    GLFWwindow* const window = glfwCreateWindow(VIEWPORT_INITIAL_WIDTH, VIEWPORT_INITIAL_HEIGHT, "Labwork #2 (2.4.4). IP-14 Babich Denys", NULL, NULL);
 
     if (!window)
     {
@@ -109,7 +109,7 @@ int main(void)
 
         rotationAngle = fmod(rotationAngle + (ROTATION_SPEED * deltaTime), COMPLETE_CIRCLE);
 
-#pragma region Cube
+        #pragma region Cube
 
         glPushMatrix();
 
@@ -124,9 +124,9 @@ int main(void)
 
         glPopMatrix();
 
-#pragma endregion
+        #pragma endregion
 
-#pragma region Prism
+        #pragma region Prism
 
         glPushMatrix();
 
@@ -141,9 +141,9 @@ int main(void)
 
         glPopMatrix();
 
-#pragma endregion
+        #pragma endregion
 
-#pragma region Pyramid
+        #pragma region Pyramid
 
         glPushMatrix();
 
@@ -158,7 +158,7 @@ int main(void)
 
         glPopMatrix();
 
-#pragma endregion
+        #pragma endregion
 
         deltaTime = glfwGetTime() - startTime;
         deltaTime = deltaTime < MIN_DELTA_TIME ? MIN_DELTA_TIME : deltaTime;
