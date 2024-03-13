@@ -8,7 +8,7 @@
 
 #include <math.h>
 
-void DrawCube(const float);
+void DrawCube(const float, const float);
 
 int main(void)
 {
@@ -44,7 +44,7 @@ int main(void)
         return EXIT_FAILURE;
     }
 
-    GLFWwindow* const window = glfwCreateWindow(VIEWPORT_INITIAL_WIDTH, VIEWPORT_INITIAL_HEIGHT, "Labwork #3 (3.1). IP-14 Babich Denys", NULL, NULL);
+    GLFWwindow* const window = glfwCreateWindow(VIEWPORT_INITIAL_WIDTH, VIEWPORT_INITIAL_HEIGHT, "Labwork #3 (3.3). IP-14 Babich Denys", NULL, NULL);
 
     if (!window)
     {
@@ -96,7 +96,7 @@ int main(void)
 
         rotationAngle = fmod(rotationAngle + (ROTATION_SPEED * deltaTime), COMPLETE_CIRCLE);
 
-        DrawCube(CUBE_SIDE_LENGTH);
+        DrawCube(rotationAngle, CUBE_SIDE_LENGTH);
 
         glPopMatrix();
 
@@ -114,42 +114,102 @@ int main(void)
     return EXIT_SUCCESS;
 }
 
-const int n = 80;
-const double h = 2.0;
-const double r = 1.0;
-double Angle = 1.0;
-
-void DrawCube(const float sideLength)
+void DrawCube(const float angle, const float sideLength)
 {
+    const float COMPLETE_CIRCLE = 360.0f;
+    const float COLOR_VALUE = angle / COMPLETE_CIRCLE;
 
-    double fi, delta_fi, red, blue;
-    delta_fi = 2 * M_PI / n;
-    fi = 0.0;
+    glBegin(GL_QUADS);
 
-    glDisable(GL_LIGHTING);
-    glBegin(GL_QUAD_STRIP);
+    // Top face
+    glNormal3f(0.0f, 1.0f, 0.0f);
 
-    for (int i = 0; i <= n; ++i) {
-        red = fabs(sin(2 * (Angle)*M_PI / 180 - fi));
-        blue = fabs(sin(3 * Angle * M_PI / 180 - fi));
-        glColor3f(red, 0.0, blue);
-        glVertex3f(r * cos(fi), r * sin(fi), 0);    // Vertex 1
+    glColor3f(1.0f, COLOR_VALUE, 0.0f);
+    glVertex3f(sideLength, sideLength, -sideLength);     // A1
 
-        red = fabs(sin(5 * Angle * M_PI / 180 + fi));
-        blue = fabs(sin(7 * Angle * M_PI / 180 + fi));
-        glColor3f(red, 1.0, blue);
-        glVertex3f(r * cos(fi), r * sin(fi), h);   // Vertex 2
+    glColor3f(1.0f, 0.0f, COLOR_VALUE);
+    glVertex3f(-sideLength, sideLength, -sideLength);    // B1
 
-        fi += delta_fi;
-    }
+    glColor3f(COLOR_VALUE, 0.0f, 1.0f);
+    glVertex3f(-sideLength, sideLength, sideLength);     // B
+
+    glColor3f(0.0f, COLOR_VALUE, 1.0f);
+    glVertex3f(sideLength, sideLength, sideLength);      // A
+
+    // Bottom face
+    glNormal3f(0.0f, -1.0f, 0.0f);
+
+    glColor3f(1.0f, 0.0f, COLOR_VALUE);
+    glVertex3f(sideLength, -sideLength, sideLength);     // D
+
+    glColor3f(COLOR_VALUE, 1.0f, 0.0f);
+    glVertex3f(-sideLength, -sideLength, sideLength);    // C
+
+    glColor3f(0.0f, 1.0f, COLOR_VALUE);
+    glVertex3f(-sideLength, -sideLength, -sideLength);   // C1
+
+    glColor3f(COLOR_VALUE, 0.0f, 1.0f);
+    glVertex3f(sideLength, -sideLength, -sideLength);    // D1
+
+    // Front face
+    glNormal3f(0.0f, 0.0f, 1.0f);
+
+    glColor3f(1.0f, COLOR_VALUE, 0.0f);
+    glVertex3f(sideLength, sideLength, sideLength);      // A
+
+    glColor3f(1.0f, 0.0f, COLOR_VALUE);
+    glVertex3f(-sideLength, sideLength, sideLength);     // B
+
+    glColor3f(COLOR_VALUE, 1.0f, 0.0f);
+    glVertex3f(-sideLength, -sideLength, sideLength);    // C
+
+    glColor3f(0.0f, 1.0f, COLOR_VALUE);
+    glVertex3f(sideLength, -sideLength, sideLength);     // D
+
+    // Right face
+    glNormal3f(1.0f, 0.0f, 0.0f);
+
+    glColor3f(1.0f, COLOR_VALUE, 0.0f);
+    glVertex3f(sideLength, sideLength, -sideLength);     // A1
+
+    glColor3f(1.0f, 0.0f, COLOR_VALUE);
+    glVertex3f(sideLength, sideLength, sideLength);      // A
+
+    glColor3f(COLOR_VALUE, 1.0f, 0.0f);
+    glVertex3f(sideLength, -sideLength, sideLength);     // D
+
+    glColor3f(0.0f, 1.0f, COLOR_VALUE);
+    glVertex3f(sideLength, -sideLength, -sideLength);    // D1
+
+    // Back face
+    glNormal3f(0.0f, 0.0f, -1.0f);
+
+    glColor3f(1.0f, 0.0f, COLOR_VALUE);
+    glVertex3f(-sideLength, sideLength, -sideLength);    // B1
+
+    glColor3f(1.0f, 0.0f, COLOR_VALUE);
+    glVertex3f(sideLength, sideLength, -sideLength);     // A1
+
+    glColor3f(COLOR_VALUE, 1.0f, 0.0f);
+    glVertex3f(sideLength, -sideLength, -sideLength);    // D1
+
+    glColor3f(0.0f, 1.0f, COLOR_VALUE);
+    glVertex3f(-sideLength, -sideLength, -sideLength);   // C1
+
+    // Left face
+    glNormal3f(-1.0f, 0.0f, 0.0f);
+
+    glColor3f(1.0f, COLOR_VALUE, 0.0f);
+    glVertex3f(-sideLength, sideLength, sideLength);     // B
+
+    glColor3f(1.0f, 0.0f, COLOR_VALUE);
+    glVertex3f(-sideLength, sideLength, -sideLength);    // B1
+
+    glColor3f(COLOR_VALUE, 1.0f, 0.0f);
+    glVertex3f(-sideLength, -sideLength, -sideLength);   // C1
+
+    glColor3f(0.0f, 1.0f, COLOR_VALUE);
+    glVertex3f(-sideLength, -sideLength, sideLength);    // C
 
     glEnd();
-
-    // Update angle for dynamic color variation
-    Angle += 1.0;
-    if (Angle > 360.0) {
-        Angle -= 360.0;
-    }
-
-    glutPostRedisplay();
 }
