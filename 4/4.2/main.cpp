@@ -55,15 +55,12 @@ int main(void)
     glfwMakeContextCurrent(window);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    glEnable(GL_LIGHTING);
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_DOUBLEBUFFER);
     glEnable(GL_COLOR_MATERIAL);
 
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-
-    glEnable(GL_LIGHT0);
 
     const GLuint texture = LoadTexture("TextureAlbedo.bmp");
 
@@ -237,7 +234,6 @@ GLuint LoadTexture(const char* const filename)
     glBindTexture(GL_TEXTURE_2D, texture);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, textureColorChannels);
 
-    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 

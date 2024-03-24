@@ -4,11 +4,15 @@
 #include <fstream>
 #include <iostream>
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 #include <glut/src/glut.h>
 #include <glfw/src/glfw3.h>
 
 void DrawCube(const float, GLuint);
 GLuint LoadTexture(const char* const);
+void CalculateTexture(unsigned char*, const int, const int);
 
 int main(void)
 {
@@ -26,7 +30,6 @@ int main(void)
     const double MIN_DELTA_TIME = 0.05;
 
     const float CUBE_SIDE_LENGTH = 1.5f;
-    const float CUBE_TEXTURE_TILING = 1.5f;
 
     const float ROTATION_SPEED = 15.0f;
     const float COMPLETE_CIRCLE = 360.0;
@@ -85,17 +88,11 @@ int main(void)
         glOrtho(-VIEWPORT_SCALER * aspectRatio, VIEWPORT_SCALER * aspectRatio, -VIEWPORT_SCALER, VIEWPORT_SCALER, CAMERA_NEAR_CLIPPING_PLANE, CAMERA_FAR_CLIPPING_PLANE);
         gluLookAt(0.0, 0.0, CAMERA_OFFSET_Z, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
-        glMatrixMode(GL_TEXTURE);
-
-        glLoadIdentity();
-
-        glScalef(CUBE_TEXTURE_TILING, CUBE_TEXTURE_TILING, CUBE_TEXTURE_TILING);
-
         glMatrixMode(GL_MODELVIEW);
 
         glLoadIdentity();
 
-        glClearColor(0.969f, 0.663f, 0.847f, 1.0f);
+        glClearColor(0.15f, 0.53f, 0.53f, 1.0f);
 
         glPushMatrix();
 
@@ -194,64 +191,58 @@ void DrawCube(const float sideLength, GLuint textureID)
 
 GLuint LoadTexture(const char* const filename)
 {
-    const int HEADER_OFFSET = 54;
-    const int COLOR_CHANNELS_COUNT = 4;
+    const int TEXTURE_WIDTH = 512;
+    const int TEXTURE_HEIGHT = 512;
 
-    const int FILE_PAYLOAD_OFFSET = 0x0A;
-    const int FILE_TEXTURE_SIZE_OFFSET = 0x22;
-    const int FILE_TEXTURE_WIDTH_OFFSET = 0x12;
-    const int FILE_TEXTURE_HEIGHT_OFFSET = 0x16;
+    const int HEADER_OFFSET = 54;
+    const int COLOR_CHANNELS_COUNT = 3;
 
     GLuint texture;
 
-    unsigned char fileHeader[HEADER_OFFSET];
+    unsigned char* textureColorChannels = new unsigned char[TEXTURE_WIDTH * TEXTURE_HEIGHT * COLOR_CHANNELS_COUNT];
 
-    int width, height;
-    int fileTextureSize, filePayloadPosition;
-
-    unsigned char* textureColorChannels;
-
-    std::ifstream file(filename, std::ios::binary);
-
-    if (!file.is_open())
-    {
-        std::cerr << "Failed to open texture file: " << filename << std::endl;
-        return EXIT_FAILURE;
-    }
-
-    if (!file.read(reinterpret_cast<char*>(fileHeader), HEADER_OFFSET) || (fileHeader[0] != 'B' || fileHeader[1] != 'M'))
-    {
-        std::cerr << "Not a BMP file: " << filename << std::endl;
-        return EXIT_FAILURE;
-    }
-
-    filePayloadPosition = *(int*)&(fileHeader[FILE_PAYLOAD_OFFSET]);
-    fileTextureSize = *(int*)&(fileHeader[FILE_TEXTURE_SIZE_OFFSET]);
-
-    width = *(int*)&(fileHeader[FILE_TEXTURE_WIDTH_OFFSET]);
-    height = *(int*)&(fileHeader[FILE_TEXTURE_HEIGHT_OFFSET]);
-
-    textureColorChannels = new unsigned char[fileTextureSize];
-
-    file.seekg(filePayloadPosition);
-    file.read(reinterpret_cast<char*>(textureColorChannels), fileTextureSize);
-    file.close();
-
-    for (int i = 0; i < fileTextureSize; i += COLOR_CHANNELS_COUNT)
-    {
-        std::swap(textureColorChannels[i], textureColorChannels[i + 2]);
-    }
+    CalculateTexture(textureColorChannels, TEXTURE_WIDTH, TEXTURE_HEIGHT);
 
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, textureColorChannels);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, TEXTURE_WIDTH, TEXTURE_HEIGHT, 0, GL_RGB, GL_UNSIGNED_BYTE, textureColorChannels);
 
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     delete[] textureColorChannels;
 
     return texture;
+}
+
+void CalculateTexture(unsigned char* textureColorChannels, const int textureWidth, const int textureHeight)
+{
+    const int COLOR_RED_CHANNEL = 0;
+    const int COLOR_GREEN_CHANNEL = 1;
+    const int COLOR_BLUE_CHANNEL = 2;
+
+    const int COLOR_MIN_CHANNEL = 0;
+    const int COLOR_MAX_CHANNEL = 255;
+
+    const int COLOR_SIZE_CHANNEL = 8;
+
+    for (int i = 0; i < textureWidth; ++i) 
+    {
+        for (int j = 0; j < textureHeight; ++j) 
+        {
+            float x = (i - textureWidth / 2.0f) / textureWidth * COLOR_SIZE_CHANNEL;
+            float y = (j - textureHeight / 2.0f) / textureHeight * COLOR_SIZE_CHANNEL;
+
+            float theta = atan2(y, x);
+            float r = sqrt(x * x + y * y);
+
+            unsigned char color = int(r * 10) % 2 == 0 && int(theta * 10) % 2 == 0 ? COLOR_MAX_CHANNEL : COLOR_MIN_CHANNEL;
+
+            int index = (j * textureWidth + i) * 3;
+
+            textureColorChannels[index + COLOR_RED_CHANNEL] = color;
+            textureColorChannels[index + COLOR_GREEN_CHANNEL] = color;
+            textureColorChannels[index + COLOR_BLUE_CHANNEL] = color;
+        }
+    }
 }
