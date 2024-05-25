@@ -146,7 +146,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Labwork6.1", "6\6.1\Labwork
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Labwork6.2", "6\6.2\Labwork6.2.vcxproj", "{AC240E93-0455-4157-806F-31EF174EF522}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Labwork6.3", "6\Labwork6.3\Labwork6.3.vcxproj", "{24821884-F682-4C93-84BC-0FF1F8F3B27E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Labwork6.3", "6\6.3\Labwork6.3.vcxproj", "{24821884-F682-4C93-84BC-0FF1F8F3B27E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
