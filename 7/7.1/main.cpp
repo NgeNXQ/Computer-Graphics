@@ -42,7 +42,7 @@ int main(int argc, char **argv)
         return EXIT_FAILURE;
     }
 
-    GLFWwindow* const window = glfwCreateWindow(VIEWPORT_INITIAL_WIDTH, VIEWPORT_INITIAL_HEIGHT, "Labwork #6 (6.2). IP-14 Babich Denys", NULL, NULL);
+    GLFWwindow* const window = glfwCreateWindow(VIEWPORT_INITIAL_WIDTH, VIEWPORT_INITIAL_HEIGHT, "Labwork #7 (7.1). IP-14 Babich Denys", NULL, NULL);
 
     if (!window)
     {

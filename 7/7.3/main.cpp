@@ -9,7 +9,7 @@
 
 GLuint LoadTexture(const char* const);
 void DrawCube(const float, const float, const float, GLuint textureID);
-void ApplyOrthogonalProjection(const float, const float, const float, const float, const float, const float);
+void ApplyProjection(const float, const float, const float, const float, const float, const float);
 
 int main(void)
 {
@@ -82,7 +82,7 @@ int main(void)
 		glEnable(GL_SCISSOR_TEST);
 		glScissor(0, viewportHeight / 2, viewportWidth / 2, viewportHeight / 2);
 
-		ApplyOrthogonalProjection(-aspectRatio * VIEWPORT_SCALER, aspectRatio * VIEWPORT_SCALER, -VIEWPORT_SCALER, VIEWPORT_SCALER, CAMERA_NEAR_CLIPPING_PLANE, CAMERA_FAR_CLIPPING_PLANE);
+		ApplyProjection(-aspectRatio * VIEWPORT_SCALER, aspectRatio * VIEWPORT_SCALER, -VIEWPORT_SCALER, VIEWPORT_SCALER, CAMERA_NEAR_CLIPPING_PLANE, CAMERA_FAR_CLIPPING_PLANE);
 
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
@@ -102,7 +102,7 @@ int main(void)
 		glEnable(GL_SCISSOR_TEST);
 		glScissor(viewportWidth / 2, viewportHeight / 2, viewportWidth / 2, viewportHeight / 2);
 
-		ApplyOrthogonalProjection(-aspectRatio * VIEWPORT_SCALER, aspectRatio * VIEWPORT_SCALER, -VIEWPORT_SCALER, VIEWPORT_SCALER, CAMERA_NEAR_CLIPPING_PLANE, CAMERA_FAR_CLIPPING_PLANE);
+		ApplyProjection(-aspectRatio * VIEWPORT_SCALER, aspectRatio * VIEWPORT_SCALER, -VIEWPORT_SCALER, VIEWPORT_SCALER, CAMERA_NEAR_CLIPPING_PLANE, CAMERA_FAR_CLIPPING_PLANE);
 
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
@@ -122,7 +122,7 @@ int main(void)
 		glEnable(GL_SCISSOR_TEST);
 		glScissor(0, 0, viewportWidth / 2, viewportHeight / 2);
 
-		ApplyOrthogonalProjection(-aspectRatio * VIEWPORT_SCALER, aspectRatio * VIEWPORT_SCALER, -VIEWPORT_SCALER, VIEWPORT_SCALER, CAMERA_NEAR_CLIPPING_PLANE, CAMERA_FAR_CLIPPING_PLANE);
+		ApplyProjection(-aspectRatio * VIEWPORT_SCALER, aspectRatio * VIEWPORT_SCALER, -VIEWPORT_SCALER, VIEWPORT_SCALER, CAMERA_NEAR_CLIPPING_PLANE, CAMERA_FAR_CLIPPING_PLANE);
 
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
@@ -142,7 +142,7 @@ int main(void)
 		glEnable(GL_SCISSOR_TEST);
 		glScissor(viewportWidth / 2, 0, viewportWidth / 2, viewportHeight / 2);
 
-		ApplyOrthogonalProjection(-aspectRatio * VIEWPORT_SCALER, aspectRatio * VIEWPORT_SCALER, -VIEWPORT_SCALER, VIEWPORT_SCALER, CAMERA_NEAR_CLIPPING_PLANE, CAMERA_FAR_CLIPPING_PLANE);
+		ApplyProjection(-aspectRatio * VIEWPORT_SCALER, aspectRatio * VIEWPORT_SCALER, -VIEWPORT_SCALER, VIEWPORT_SCALER, CAMERA_NEAR_CLIPPING_PLANE, CAMERA_FAR_CLIPPING_PLANE);
 
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
@@ -465,7 +465,7 @@ void DrawCube(const float sideLength, const float lineWidth, const float lineLen
 	glFlush();
 }
 
-void ApplyOrthogonalProjection(const float left, const float right, const float bottom, const float top, const float nearPlane, const float farPlane)
+void ApplyProjection(const float left, const float right, const float bottom, const float top, const float nearPlane, const float farPlane)
 {
 	float matrix[16];
 	float tx = -(right + left) / (right - left);

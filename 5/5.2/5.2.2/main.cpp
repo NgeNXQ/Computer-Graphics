@@ -125,7 +125,6 @@ void DrawPanoram(GLuint textureID, float angle)
     const float h = 1.0f, r = 0.4;
     float delta_fi = 2 * M_PI / n, fi = 0.0;
 
-    //glEnable(GL_TEXTURE_2D);
     glBegin(GL_QUAD_STRIP);
 
     for (int i = 0; i <= n; ++i)
